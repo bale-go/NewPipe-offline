@@ -60,14 +60,16 @@ To get started, follow these steps:
 
 The repository provides a command-line interface (CLI) for easy interaction with the scripts. The main script is `repository_builder.py`, which handles the process of building the offline repository.
 
+```
 usage: python repository_builder.py [-h] [-rc REPEAT_COUNT] [-d DURATION]
-
-optional arguments:
+arguments:
   -h, --help            show this help message and exit
-  -rc REPEAT_COUNT, --repeat_count REPEAT_COUNT
-                        the track was streamed at least 'repeat_count' times
-  -d DURATION, --duration DURATION
+  -rc REPEAT_COUNT, --repeat_count REPEAT_COUNT 
+                        the track was streamed at least 'repeat_count' times                        
+  -d DURATION, --duration DURATION  
                         the track is at most 'duration' seconds long
+```
+                        
 
 To download the songs that you streamed at least 6 times and is at most 900 s long, run the following command:
 
@@ -79,13 +81,14 @@ The script will download the audio files for your favorite songs in opus format.
 Opus is a highly versatile and advanced audio codec format known for its exceptional compression rate and quality. Developed by the Internet Engineering Task Force (IETF), Opus offers impressive performance across a wide range of applications, including music streaming, VoIP, and video conferencing. What sets Opus apart is its ability to achieve outstanding compression without significant loss of audio quality. By leveraging innovative techniques like variable bitrate encoding and adaptive streaming, Opus delivers superior efficiency compared to other lossy formats. As a result, it has gained recognition as the leading audio format for achieving the best compression rate while maintaining excellent sound fidelity.
 
 (Optional) Adjusting the perceived loudness of tracks with Audacity and ReplayGain plug-in:
+
 ReplayGain is a valuable audio processing technique designed to address the inconsistent volume levels that often plague our music libraries. It offers several notable advantages. Firstly, ReplayGain enables the normalization of audio tracks, ensuring they play back at a consistent volume level. This eliminates the need for constant manual volume adjustments, creating a seamless listening experience across different songs and albums. Secondly, it preserves the original dynamic range of the music, meaning the soft and loud parts of a song are maintained without distortion or compression. This allows for a more authentic representation of the artist's intended sound, enhancing the overall listening pleasure. Overall, ReplayGain simplifies the management of audio volume levels, and improves the consistency of playback.
 
 To normalize tracks, follow these steps:
 1. Install Audacity (https://www.audacityteam.org/download/)
 2. Install ReplayGain plug-in (https://forum.audacityteam.org/t/replaygain-plug-in/22589) or simply copy ReplayGain.ny to .audacity-data/Plug-Ins folder.
 3. Move ReplayGain.txt to .audacity-data/Macros folder.
-4. Start Audacity. Tools -> Macros. Select Macro -> ReplayGain. Files: Select the downloaded opus files. (This can take up some disk space. Check if you have at least Nx50Mbyte, where N is the number of tracks.)
+4. Start Audacity. Tools -> Macros. Select Macro -> ReplayGain. Files: Selecting the downloaded opus files will start the process. (This can take up some disk space. Check if you have at least Nx50Mbyte, where N is the number of tracks.)
 5. Flac files will be exported to ~/Documents/macro-output
    ```bash
    cd ~/Documents/macro-output
