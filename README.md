@@ -39,12 +39,12 @@ To get started, follow these steps:
    ```bash
    pip install pandas
    ```
-3. Access your NewPipe listening history: NewPipe -> Settings -> Contetent -> Export database
+3. Access your NewPipe listening history on your phone: NewPipe -> Settings -> Contetent -> Export database
 4. Change to the directory with the scripts:
    ```bash
    cd NewPipe-offline
    ```
-5. Save and extract the NewPipeData-#.zip
+5. Copy from the phone and extract NewPipeData-#.zip to the NewPipe-offline folder.
 6. Convert newpipe.db to csv files (requires sqlite3: sudo apt install sqlite3):
    ```bash
    bash sqlite2csv.sh newpipe.db 
