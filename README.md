@@ -39,7 +39,7 @@ To get started, follow these steps:
    ```bash
    pip install pandas
    ```
-3. Access your NewPipe listening history on your phone: NewPipe -> Settings -> Contetent -> Export database
+3. Access your NewPipe listening history on your phone: NewPipe -> Settings -> Content -> Export database
 4. Change to the directory with the scripts:
    ```bash
    cd NewPipe-offline
