@@ -115,4 +115,4 @@ Contributions are welcome! If you want to contribute to this project, please fol
 
 ## License
 
-This project is licensed under the [MIT License](LICENSE). Feel free to modify and distribute the code as needed.
+This project is licensed under the [GNU General Public License v3.0](LICENSE). Feel free to modify and distribute the code as needed.
