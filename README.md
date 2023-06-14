@@ -25,7 +25,7 @@ To use the scripts provided in this repository, you'll need the following:
 - Python packages: `pandas`, `os`, `argparse`
 - sqlite3
 - Access to your listening statistics from NewPipe
-- (optional) If you do not want large differences between the perceived loudness of tracks: Audacity and ReplayGain plug-in.
+- (optional) If you do not want large differences between the perceived loudness of tracks: `ffmpeg` and `ffmpeg-normalize`
 
 ## Getting Started
 
@@ -80,27 +80,20 @@ python repository_builder.py -rc 6 -d 900
 The script will download the audio files for your favorite songs in opus format.
 Opus is a highly versatile and advanced audio codec format known for its exceptional compression rate and quality. Developed by the Internet Engineering Task Force (IETF), Opus offers impressive performance across a wide range of applications, including music streaming, VoIP, and video conferencing. What sets Opus apart is its ability to achieve outstanding compression without significant loss of audio quality. By leveraging innovative techniques like variable bitrate encoding and adaptive streaming, Opus delivers superior efficiency compared to other lossy formats. As a result, it has gained recognition as the leading audio format for achieving the best compression rate while maintaining excellent sound fidelity.
 
-## (Optional) Adjusting the perceived loudness of tracks with Audacity and ReplayGain plug-in:
+## (Optional) Adjusting the perceived loudness of tracks:
 
 ReplayGain is a valuable audio processing technique designed to address the inconsistent volume levels of individual tracks that often plague our music libraries. It offers several notable advantages. Firstly, ReplayGain enables the normalization of audio tracks, ensuring they play back at a consistent volume level. This eliminates the need for constant manual volume adjustments, creating a seamless listening experience across different songs and albums. Secondly, it preserves the original dynamic range of the music, meaning the soft and loud parts of a song are maintained without distortion or compression. This allows for a more authentic representation of the artist's intended sound, enhancing the overall listening pleasure.
 
 To normalize tracks, follow these steps:
-1. Install Audacity (https://www.audacityteam.org/download/)
-2. Install ReplayGain plug-in (https://forum.audacityteam.org/t/replaygain-plug-in/22589) or simply copy ReplayGain.ny to .audacity-data/Plug-Ins folder.
-3. Move ReplayGain.txt to .audacity-data/Macros folder.
-4. Start Audacity. Tools -> Macros. Select Macro -> ReplayGain. Files: Selecting the downloaded opus files will start the process. (This can take up some disk space. Check if you have at least Nx50Mbyte, where N is the number of tracks.)
-5. Flac files will be exported to ~/Documents/macro-output
+1. Install the required Python package using `pip`:
    ```bash
-   cd ~/Documents/macro-output
+   pip install ffmpeg-normalize
    ```
-7. You can use parallel and ffmpeg (sudo apt install parallel ffmpeg) to convert flac files back to opus. Opus at 128 KB/s (VBR) is pretty much transparent, meaning that it is pretty much indistinguishable from the lossless format.
+2. You can use parallel and ffmpeg-normalize (sudo apt install parallel ffmpeg) to normalize tracks. Opus at 128 KB/s (VBR) is pretty much transparent, meaning that it is pretty much indistinguishable from the lossless format.
    ```bash
-   parallel ffmpeg -v 0 -i {} -c:a libopus -b:a 128k {.}.opus ::: ./*.flac
+   parallel ffmpeg-normalize {} --keep-loudness-range-target -t -13 -c:a libopus -b:a 128k -o {} -f ::: ./*.opus
    ```
-8. Now you can delete the flac files:
-   ```bash
-   rm *.flac
-   ```
+
 
 
 ## Contributing
